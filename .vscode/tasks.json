@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build ASM",
+            "type": "shell",
+            "command": "nasm",
+            "args": [
+                "-f", "elf64",    // For 64-bit, or "elf" for 32-bit
+                "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Assemble the .asm file"
+        },
+        {
+            "label": "Link ASM",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-nostartfiles",
+                "-no-pie",
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Link the object file to produce executable"
+        }
+    ]
+}

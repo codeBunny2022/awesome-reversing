@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Assembly",   // This is the name that will appear in the Run button
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",  // Executable to run
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,  // This will open a terminal to show output
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",  // Path to GDB debugger
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build Assembly",  // This tells VSCode to run the build task before launching
+            "miDebuggerArgs": "",
+            "internalConsoleOptions": "neverOpen",
+            "osx": {
+                "MIMode": "lldb"
+            }
+        }
+    ]
+}
